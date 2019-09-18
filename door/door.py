@@ -74,6 +74,12 @@ class Door:
             thread = payload["data"].get("thread_ts") or payload["data"].get("ts")
             if text == "!ping":
                 self.slack.chat_postMessage(channel=_DOOR_CHANNEL, text="pong", thread_ts=thread)
+            elif text == "!cancel" and self.add_next_card is not None:
+                self.slack.chat_postMessage(channel=_DOOR_CHANNEL,
+                                            text=f"Canceled add for {self.add_next_card}",
+                                            thread_ts=thread)
+                log.debug("Canceling add request for %s", self.add_next_card)
+                self.add_next_card = None
             elif text == "!unlock":
                 self.door.open()
                 self.slack.chat_postMessage(channel=_DOOR_CHANNEL, text="Opened", thread_ts=thread)

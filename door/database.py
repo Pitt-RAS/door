@@ -21,7 +21,7 @@ class CardEntry:
 class CardDatabase:
     """Card database."""
 
-    def __init__(self, file: Path = Path("database.txt")) -> None:
+    def __init__(self, file: Path = Path("/app/door/door/database.txt")) -> None:
         """Construct a card database."""
         self.file = file
         self.entries: Dict[str, CardEntry] = {}

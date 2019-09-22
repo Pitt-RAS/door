@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  door:
+    build: .
+    volumes: /database.txt:/app/database.txt
+    network_mode: bridge
+    privileged: true
+    restart_policy:
+        condition: always
+    environment:
+        SLACK_API_TOKEN: "PUT_KEY_HERE"

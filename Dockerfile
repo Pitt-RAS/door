@@ -4,4 +4,4 @@ COPY . /app
 
 RUN pip install /app
 
-CMD ["python", "/app/door.py"]
+CMD ["python", "/app/door/door.py"]
